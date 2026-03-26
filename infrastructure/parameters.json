@@ -1,0 +1,99 @@
+{
+    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "name": {
+            "value": "awprojectsynapseblooms"
+        },
+        "location": {
+            "value": "westus2"
+        },
+        "defaultDataLakeStorageAccountName": {
+            "value": "defaultsynapsestorblo3"
+        },
+        "defaultDataLakeStorageFilesystemName": {
+            "value": "defaultfilesystem"
+        },
+        "sqlAdministratorLogin": {
+            "value": "sqladminuser"
+        },
+        "sqlAdministratorLoginPassword": {
+            "value": null
+        },
+        "setWorkspaceIdentityRbacOnStorageAccount": {
+            "value": true
+        },
+        "createManagedPrivateEndpoint": {
+            "value": false
+        },
+        "defaultAdlsGen2AccountResourceId": {
+            "value": "/subscriptions/1f1ab564-9305-429b-9b5f-63f7a6a9e8a0/resourceGroups/AdventureWorksProject/providers/Microsoft.Storage/storageAccounts/defaultsynapsestorblo3"
+        },
+        "azureADOnlyAuthentication": {
+            "value": false
+        },
+        "allowAllConnections": {
+            "value": true
+        },
+        "managedVirtualNetwork": {
+            "value": "default"
+        },
+        "tagValues": {
+            "value": {}
+        },
+        "storageSubscriptionID": {
+            "value": "1f1ab564-9305-429b-9b5f-63f7a6a9e8a0"
+        },
+        "storageResourceGroupName": {
+            "value": "AdventureWorksProject"
+        },
+        "storageLocation": {
+            "value": "westus2"
+        },
+        "storageRoleUniqueId": {
+            "value": "c924a04e-6e9f-4523-a667-5875e563e01c"
+        },
+        "isNewStorageAccount": {
+            "value": true
+        },
+        "isNewFileSystemOnly": {
+            "value": false
+        },
+        "adlaResourceId": {
+            "value": ""
+        },
+        "managedResourceGroupName": {
+            "value": "rg_managed_aw_project_synapse"
+        },
+        "storageAccessTier": {
+            "value": "Hot"
+        },
+        "storageAccountType": {
+            "value": "Standard_RAGRS"
+        },
+        "storageSupportsHttpsTrafficOnly": {
+            "value": true
+        },
+        "storageKind": {
+            "value": "StorageV2"
+        },
+        "minimumTlsVersion": {
+            "value": "TLS1_2"
+        },
+        "storageIsHnsEnabled": {
+            "value": true
+        },
+        "userObjectId": {
+            "value": "182bc3c3-17a7-43b6-a0de-8a7a8a3fc142"
+        },
+        "setSbdcRbacOnStorageAccount": {
+            "value": true
+        },
+        "setWorkspaceMsiByPassOnStorageAccount": {
+            "value": false
+        },
+        "workspaceStorageAccountProperties": {
+            "value": {}
+        }
+    }
+}

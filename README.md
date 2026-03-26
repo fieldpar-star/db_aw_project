@@ -1,6 +1,7 @@
 # AdventureWorks Data Project
 
 A cloud data engineering project using Azure Data Factory, Databricks, Synapse Analytics and Power BI.
+A cloud data engineering project using Azure Synapse Analytics and Azure Databricks, deployed on Microsoft Azure.
 
 ## Architecture
 
@@ -30,6 +31,12 @@ A cloud data engineering project using Azure Data Factory, Databricks, Synapse A
 | 6 | **Azure Synapse** | Serves transformed data for analytics |
 | 7 | **Power BI** | Reporting and visualisation |
 
+AdventureWorksProject (Resource Group)
+├── Azure Synapse Analytics    # Data integration, pipelines, SQL pools
+├── Azure Databricks           # Data transformation and analytics
+└── ADLS Gen2 Storage          # Data lake storage
+```
+
 ## Repository Structure
 
 ```
@@ -38,7 +45,7 @@ db_aw_project/
 │   ├── template.json
 │   └── parameters.json
 ├── synapse/                   # Synapse pipelines, notebooks, datasets
-├── databricks/                # Databricks transformation notebooks
+├── databricks/                # Databricks notebooks and jobs
 └── .github/
     └── workflows/
         └── deploy.yml         # GitHub Actions CI/CD pipeline
@@ -74,7 +81,32 @@ GitHub Actions automatically runs on every push to `main` or `db_feature`:
 | `main` | Production — triggers full deployment |
 | `db_feature` | Databricks feature development |
 
-## Azure Details
+## Getting Started
+
+### Prerequisites
+- Azure CLI
+- Git
+- Access to the `AdventureWorksProject` resource group
+
+### Deploy Infrastructure
+
+```bash
+az deployment group create \
+  --resource-group AdventureWorksProject \
+  --template-file infrastructure/template.json \
+  --parameters infrastructure/parameters.json \
+  --parameters sqlAdministratorLoginPassword='<password>'
+```
+
+### Connect to Synapse
+
+Open Synapse Studio at:
+```
+https://web.azuresynapse.net
+```
+Select workspace `awprojectsynapseblooms`.
+
+## Azure Subscription
 
 - **Subscription:** Azure subscription 1
 - **Resource Group:** AdventureWorksProject
