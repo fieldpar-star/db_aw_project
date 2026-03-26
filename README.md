@@ -1,10 +1,36 @@
 # AdventureWorks Data Project
 
+A cloud data engineering project using Azure Data Factory, Databricks, Synapse Analytics and Power BI.
 A cloud data engineering project using Azure Synapse Analytics and Azure Databricks, deployed on Microsoft Azure.
 
 ## Architecture
 
 ```
+┌─────────────┐     ┌──────────────────┐     ┌────────────────────────────────────┐     ┌──────────┐     ┌──────────┐
+│ Data Source │────▶│  Data Ingestion   │────▶│           Transformation            │────▶│ Serving  │────▶│Reporting │
+│   (HTTP)    │     │  (Data Factory)   │     │                                    │     │(Synapse) │     │(Power BI)│
+└─────────────┘     └────────┬─────────┘     │  ┌────────────────────────────┐    │     └──────────┘     └──────────┘
+                             │               │  │    Transformed Data         │    │
+                             ▼               │  │     (Data Lake Gen2)        │    │
+                    ┌─────────────────┐      │  └────────────────────────────┘    │
+                    │  Raw Data Store │      │             ▲                       │
+                    │ (Data Lake Gen2)│─────▶│        Databricks                  │
+                    └─────────────────┘      │     (Transformation)               │
+                                            └────────────────────────────────────┘
+```
+
+### Pipeline Flow
+
+| Step | Service | Description |
+|---|---|---|
+| 1 | **HTTP Source** | Raw data ingested from HTTP endpoints |
+| 2 | **Azure Data Factory** | Orchestrates data ingestion pipelines |
+| 3 | **Raw Data Lake Gen2** | Stores raw/bronze layer data |
+| 4 | **Azure Databricks** | Transforms and processes raw data (silver layer) |
+| 5 | **Transformed Data Lake Gen2** | Stores cleaned/transformed data (gold layer) |
+| 6 | **Azure Synapse** | Serves transformed data for analytics |
+| 7 | **Power BI** | Reporting and visualisation |
+
 AdventureWorksProject (Resource Group)
 ├── Azure Synapse Analytics    # Data integration, pipelines, SQL pools
 ├── Azure Databricks           # Data transformation and analytics
